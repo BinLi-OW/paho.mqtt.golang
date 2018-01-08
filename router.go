@@ -68,6 +68,8 @@ func routeIncludesTopic(route, topic string) bool {
 // match takes the topic string of the published message and does a basic compare to the
 // string of the current Route, if they match it returns true
 func (r *route) match(topic string) bool {
+	originTopic := strings.Replace(r.topic, "$queue/", "", 1)
+	DEBUG.Println(PNG, "routeIncludesTopic r.topic ", r.topic, " , and topic ", topic, " originTopic ", originTopic)
 	return r.topic == topic || routeIncludesTopic(r.topic, topic)
 }
 
