@@ -70,7 +70,7 @@ func routeIncludesTopic(route, topic string) bool {
 func (r *route) match(topic string) bool {
 	originTopic := strings.Replace(r.topic, "$queue/", "", 1)
 	DEBUG.Println(PNG, "routeIncludesTopic r.topic ", r.topic, " , and topic ", topic, " originTopic ", originTopic)
-	return r.topic == topic || routeIncludesTopic(r.topic, topic)
+	return originTopic == topic || routeIncludesTopic(originTopic, topic)
 }
 
 type router struct {
